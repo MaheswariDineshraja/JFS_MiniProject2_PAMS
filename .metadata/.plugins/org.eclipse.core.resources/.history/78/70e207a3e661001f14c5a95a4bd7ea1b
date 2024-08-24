@@ -1,0 +1,77 @@
+package org.user.app.controller;
+
+import java.util.List;
+import org.user.app.model.Appointments;
+import org.user.app.service.DiseaseService;
+import org.user.app.service.DoctorService;
+import org.user.app.service.PatientService;
+import org.user.app.service.AppointmentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import jakarta.persistence.EntityManager;
+
+
+@Controller
+@RequestMapping("/appointments")
+public class AppointmentController
+{
+
+    // load employee data
+    private AppointmentService appointmentService;
+    private PatientService patientService;//    
+    private List<Appointments> theAppointments;
+    @Autowired
+    private EntityManager em;
+
+    public AppointmentController(AppointmentService appointmentService,PatientService patientService)
+    {
+        this.appointmentService = appointmentService;
+        this.patientService = patientService;
+        
+    }
+
+    @GetMapping("/list")
+    public String listEmployees(Model theModel)
+    {
+    	theAppointments = appointmentService.getAllPatients();
+        theModel.addAttribute("patients", theAppointments);
+        return "patients/list-patients";
+    }
+
+    @GetMapping("/addAppointment")
+    public String getPatientForm(Model model)
+    {
+    	Appointments patient = new Appointments();
+        model.addAttribute("doctorList",patientService.getAllPatients());
+        model.addAttribute("appointments",patient);
+        return "patients/addPatient";
+    }
+
+    @PostMapping("/save")
+    public String savePatient(@ModelAttribute("appointments") Appointments theAppointment)
+    {
+
+    	appointmentService.save(theAppointment);
+        return "redirect:/patients/list";
+    }
+
+    @GetMapping("/showFormForUpdate1")
+    public String showUpdateForm(@RequestParam("appointment_id") int theID,Model model)
+    {
+    	Appointments patient = appointmentService.findById(theID);
+        model.addAttribute("doctorList",patientService.getAllPatients());
+        model.addAttribute("patient",patient);
+        return "patients/addPatient";
+    }
+
+    @GetMapping("/delete")
+    public String deletePatient(@RequestParam("patientId") int theID)
+    {
+        patientService.deleteById(theID);
+        return "redirect:/patients/list";
+    }
+
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="/Footer/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Footer/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/Footer/css/Article-List.css">
+    <link rel="stylesheet" href="/Footer/css/Footer-Dark.css">
+    <link rel="stylesheet" href="/Footer/css/styles.css">
+    <link rel="stylesheet" href="/nav-bar/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/nav-bar/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="/nav-bar/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="/nav-bar/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="/nav-bar/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="/nav-bar/css/styles.css">
+    <link rel="stylesheet" href="/nav-bar/css/Team-Boxed.css">
+    <link rel="stylesheet" href="/Contact-US/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Contact-US/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="/Contact-US/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="/Contact-US/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="/Contact-US/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="/Contact-US/css/styles.css">
+</head>
+
+<body>
+<div th:replace="fragments/nav-bar/nav-bar :: nav"></div>
+<div class="contact-clean">
+    <form action="#" th:action="@{/Home/save-contact}"th:object="${contact}" method="POST">
+        <h2 class="text-center">Contact us</h2>
+        <div class="form-group"><input class="form-control" type="text" th:field="*{name}" name="name" placeholder="Name"></div>
+        <div class="form-group"><input class="form-control is-invalid" type="email" name="email" th:field="*{email}" placeholder="Email">
+<!--            <small class="form-text text-danger">Please enter a correct email address.</small>-->
+        </div>
+        <div class="form-group"><textarea class="form-control" name="message" th:field="*{message}" placeholder="Message"
+                                          rows="14"></textarea></div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit"
+                    onclick="alert('Thank You to Sending message Us. We send you an email.')">send</button>
+        </div>
+    </form>
+</div>
+<!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+<div th:replace="fragments/Footer/Footer :: footer"></div>
+</body>
+
+</html>

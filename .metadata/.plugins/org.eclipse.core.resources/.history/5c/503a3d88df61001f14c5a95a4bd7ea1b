@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="/Footer/css/Article-List.css">
+    <link rel="stylesheet" href="/Footer/css/Footer-Dark.css">
+    <link rel="stylesheet" href="/nav-bar/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/nav-bar/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="/nav-bar/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="/nav-bar/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="/nav-bar/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="/nav-bar/css/styles.css">
+    <link rel="stylesheet" href="/nav-bar/css/Team-Boxed.css">
+    <link rel="stylesheet" href="/Home/css/Article-List.css">    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- Ionicons from CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS: Replace with alternatives or keep local -->
+    <!-- Example alternative CSS files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.0/darkly/bootstrap.min.css"> <!-- For Footer-Dark.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.0/flatly/bootstrap.min.css"> <!-- For Article-List.css -->
+    
+</head>
+
+<body>
+<div th:replace="fragments/nav-bar/nav-bar :: nav"></div>
+<div class="article-list">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Patient Management System</h2>
+            <p class="text-center">Currently, hospitals are largely staffed by professional physicians, surgeons,
+                nurses, and allied health practitioners, whereas in the past, this work was usually performed by the
+                members of founding religious orders or by volunteers</p>
+        </div>
+        <div class="row articles">
+            <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="/Home/img/1.jpg"></a>
+                <h3 class="name">Patients</h3>
+                <p class="description"> When people get sick    123 , they visit the respective doctors and the doctors figure out why. They
+                    give people medicine and other kinds of treatment. They also give advice about diet, exercise, and
+                    sleep.</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a></div>
+            <div
+                    class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="/Home/img/2.jpg"></a>
+                <h3 class="name">Hospital</h3>
+                <p class="description">A hospital is a health care institution providing patient treatment with
+                    specialized medical and nursing staff and medical equipment.</p><a class="action" href="#"><i
+                        class="fa fa-arrow-circle-right"></i></a></div>
+            <div
+                    class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="/Home/img/3.jpg"></a>
+                <h3 class="name">Medicines</h3>
+                <p class="description">Pharmacy is the science and technique of preparing, dispensing, and reviewing
+                    drugs and providing additional clinical services. It is a health profession that links health
+                    sciences with pharmaceutical sciences and aims to ensure the safe, effective, and affordable use of
+                    drugs.</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a></div>
+        </div>
+    </div>
+</div>
+<!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+<div th:replace="fragments/Footer/Footer :: footer"></div>
+</body>
+
+</html>

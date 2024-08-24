@@ -1,0 +1,5 @@
+package org.user.app.service;
+
+public class DiseaseService {
+
+}

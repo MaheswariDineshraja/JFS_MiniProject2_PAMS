@@ -1,0 +1,61 @@
+package org.user.app.service;
+
+import org.user.app.repository.AppointmentRepository;
+import org.user.app.model.Appointments;
+import org.user.app.model.Patient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class AppointmentService
+{
+    private AppointmentRepository appointmentRepository;
+
+    public AppointmentService()
+    {
+    }
+
+    @Autowired
+    public AppointmentService(AppointmentRepository appointmentRepository)
+    {
+        this.appointmentRepository = appointmentRepository;
+    }
+
+    public List<Appointments> getAllPatients()
+    {
+        List<Appointments> appointmentList = appointmentRepository.findAll();
+        return appointmentList;
+    }
+
+    public void save(Appointments patient)
+    {
+    	appointmentRepository.save(patient);
+    }
+
+    public Appointments findById(int id)
+    {
+    	Appointments newPatient =null;
+        Optional<Appointments> patient = appointmentRepository.findById(id);
+        if(patient.isPresent())
+        {
+            newPatient = patient.get();
+        }
+        return newPatient;
+    }
+
+
+    public void deleteById(int id)
+    {
+        patientRepository.deleteById(id);
+    }
+
+//    public void updatePatient(Patient patient)
+//    {
+//        patientRepository.
+//    }
+}
+
+

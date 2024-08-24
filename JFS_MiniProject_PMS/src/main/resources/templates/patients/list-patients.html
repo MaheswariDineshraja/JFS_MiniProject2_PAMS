@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<link rel="stylesheet" href="/Footer/css/Article-List.css">
+	<link rel="stylesheet" href="/Footer/css/Footer-Dark.css">
+	<link rel="stylesheet" href="/Footer/css/styles.css">
+	<link rel="stylesheet" href="/nav-bar/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/nav-bar/css/Contact-Form-Clean.css">
+	<link rel="stylesheet" href="/nav-bar/css/Login-Form-Dark.css">
+	<link rel="stylesheet" href="/nav-bar/css/Navigation-with-Button.css">
+	<link rel="stylesheet" href="/nav-bar/css/Registration-Form-with-Photo.css">
+	<link rel="stylesheet" href="/nav-bar/css/Team-Boxed.css">
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap CSS from CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zf9neR6VRsEN5sEtM2Wz5WTeZjk/Jz5k7E9U7pXWXpoGpFhmt58Kl6jUDyz4LU0" crossorigin="anonymous">
+    
+    <!-- Ionicons from CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS: Replace with alternatives or keep local -->
+    <!-- Example alternative CSS files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.0/darkly/bootstrap.min.css"> <!-- For Footer-Dark.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.0/flatly/bootstrap.min.css"> <!-- For Article-List.css -->
+    
+
+	<title>Patient Directory</title>
+</head>
+
+<body>
+
+<div th:replace="fragments/nav-bar/nav-bar :: nav"></div>
+
+<div class="container">
+
+	<h3>Patient Directory</h3>
+	<hr>
+	<a th:href="@{/patients/addPatient}" class="btn btn-primary btn-sm mb-3">
+		Add New Patient</a>
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Patient Name</th>
+				<th>Father Name</th>
+				<th>Gender</th>
+				<th>CNIC</th>
+				<th>Date Of Birth</th>
+				<th>Disease History</th>
+				<th>Priscription</th>
+                <th>Action</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempPatient : ${patients}">
+			
+				<td th:text="${tempPatient.name}" />
+				<td th:text="${tempPatient.fatherName}" />
+				<td th:text="${tempPatient.gender}" />
+				<td th:text="${tempPatient.CNIC}" />
+				<td th:text="${tempPatient.dateOfBirth}" />
+				<td th:text="${tempPatient.diseaseHistory}" />
+				<td th:text="${tempPatient.prescription}" />
+
+                <td>
+                    <!-- Add "update" button/link -->
+                    <a th:href="@{/patients/showFormForUpdate(patientId=${tempPatient.id})}"
+                       class="btn btn-info btn-sm">
+                        Update
+                    </a>
+
+                    <!-- Add "delete" button/link -->
+                    <a th:href="@{/patients/delete(patientId=${tempPatient.id})}"
+                       class="btn btn-danger btn-sm"
+                       onclick="if (!(confirm('Are you sure you want to delete this patient?'))) return false">
+                        Delete
+                    </a>
+
+                </td>
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+</div>
+<div th:replace="fragments/Footer/Footer :: footer"></div>
+</body>
+
+
+</html>
+
+
+

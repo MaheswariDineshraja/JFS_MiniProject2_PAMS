@@ -1,0 +1,50 @@
+package org.user.app.model;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Date;
+import java.util.List;
+
+@Entity
+@Data
+@NoArgsConstructor
+@Table(name = "doctor")
+public class Doctor
+{
+  @Id
+  @GeneratedValue(strategy= GenerationType.IDENTITY)
+  @Column(name="id")
+  private int id;
+  @Column(name="doctor_name")
+  private String Name;
+  @Column(name="father_name")
+  private String fatherName;
+  @Column(name="gender")
+  private String Gender;
+  @Column(name="cnic")
+  private String cnic;
+  @Column(name="email")
+  private String email;
+  @Column(name="date_of_birth")
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  private Date dateOfBirth;
+
+  @ManyToOne(cascade =
+          {CascadeType.DETACH, CascadeType.MERGE,
+                  CascadeType.PERSIST, CascadeType.REFRESH})
+  @JoinColumn(name = "disease_id")
+  private Disease disease;
+
+  @OneToMany(fetch = FetchType.LAZY,
+          mappedBy = "doctor",
+          cascade = {CascadeType.DETACH, CascadeType.MERGE,
+                  CascadeType.PERSIST, CascadeType.REFRESH})
+  private List<Patient> patients;
+
+  
+}
+
